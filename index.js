@@ -7,17 +7,18 @@ const { Client, MessageAttachment } = require('discord.js');
 const bot = new Client();
 
 const token = arguments[2];
+const idDiscordApp = arguments[3];
 
 bot.on('ready', () => {
     console.log('Raul birhday bot is online');
 })
 
 const possibleBirthday = MissingTime.calculateNextBirhday(arguments[1]);
-const words= ['importante', 'hoy', 'cumpleaños', 'birthday', 'cumpleañero', 'cuanto', 'falta'];
+const words= ['importante', 'hoy', 'cumpleaños', 'birthday', 'cumpleañero', 'cuanto', 'falta', 'mañana'];
 
 bot.on('message', msg => {
 
-    if (msg.author.id !== '716124957674962944'){
+    if (msg.author.id !== idDiscordApp){
 
         if (SearchWords.loopAllWords(msg.content, words)){
 
