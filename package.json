@@ -1,0 +1,14 @@
+{
+  "name": "raulbirthdaybot",
+  "version": "1.0.0",
+  "description": "a bot to know the best important date",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raul",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.2.0"
+  }
+}
