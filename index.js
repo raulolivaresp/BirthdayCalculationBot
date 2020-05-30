@@ -1,23 +1,25 @@
-const myArgs = process.argv.slice(2);
+//get arguments from console
+const arguments = process.argv.slice(2);
 
-const MissingTime = require('./calculateDate.js')
+const MissingTime = require('./calculateDate.js');
+const SearchWords = require('./searchWords.js');
 const { Client, MessageAttachment } = require('discord.js');
 const bot = new Client();
 
-//Token get from discord bot token
-const token = myArgs[2];
+const token = arguments[2];
 
 bot.on('ready', () => {
     console.log('Raul birhday bot is online');
 })
 
-const possibleBirthday = MissingTime.calculateNextBirhday(myArgs[1]);
+const possibleBirthday = MissingTime.calculateNextBirhday(arguments[1]);
+const words= ['importante', 'hoy', 'cumpleaños', 'birthday', 'cumpleañero', 'cuanto', 'falta'];
 
 bot.on('message', msg => {
 
     if (msg.author.id !== '716124957674962944'){
 
-        if (msg.content === 'es hoy?'){
+        if (SearchWords.loopAllWords(msg.content, words)){
 
             let missing = MissingTime.calculateDifference(possibleBirthday, msg.createdTimestamp);
 
@@ -29,7 +31,7 @@ bot.on('message', msg => {
                 msg.channel.send(msg.author, attachment);
             }
             else {
-                msg.reply("No es hoy 😢. Quedan " + missing + " dias para el cumpleaños del "+ myArgs[0] );
+                msg.reply("No es hoy 😢. Quedan " + missing + " dias para el cumpleaños del "+ arguments[0] );
             }
         }
     }
