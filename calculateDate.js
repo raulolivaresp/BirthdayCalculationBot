@@ -28,19 +28,3 @@ module.exports = {
     }
 
 }
-/*
-let currentDate = 1590810141440;
-
-
-let date = new Date().getTime();
-
-
-var birthday = new Date("06/02/2020 12:00:00");
-
-
-let missing = (birthday.getTime() - date)/86400000;
-
-let days = Math.floor(missing);
- 
-console.log(days);
-*/
