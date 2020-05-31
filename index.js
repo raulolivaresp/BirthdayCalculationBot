@@ -8,13 +8,14 @@ const bot = new Client();
 
 const token = arguments[2];
 const idDiscordApp = arguments[3];
+const possibleBirthday = MissingTime.calculateNextBirhday(arguments[1]);
+const name = arguments[0];
+
+const words= ['importante', 'hoy', 'cumpleaños', 'birthday', 'cumpleañero', 'cuanto', 'falta', 'mañana'];
 
 bot.on('ready', () => {
     console.log('Raul birhday bot is online');
 })
-
-const possibleBirthday = MissingTime.calculateNextBirhday(arguments[1]);
-const words= ['importante', 'hoy', 'cumpleaños', 'birthday', 'cumpleañero', 'cuanto', 'falta', 'mañana'];
 
 bot.on('message', msg => {
 
@@ -32,7 +33,7 @@ bot.on('message', msg => {
                 msg.channel.send(msg.author, attachment);
             }
             else {
-                msg.reply("No es hoy 😢. Quedan " + missing + " dias para el cumpleaños del "+ arguments[0] );
+                msg.reply("No es hoy 😢. Quedan " + missing + " dias para el cumpleaños del "+ name );
             }
         }
     }

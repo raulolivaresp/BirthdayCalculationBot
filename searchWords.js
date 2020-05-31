@@ -7,7 +7,7 @@ module.exports = {
 
     loopAllWords: function(text, listWords) {
         for (word of listWords){
-            if (findWord(word, text) === true){
+            if (this.findWord(word, text) === true){
                 return true;
             }
         }
