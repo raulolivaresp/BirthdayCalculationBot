@@ -6,10 +6,11 @@ const SearchWords = require('./searchWords.js');
 const { Client, MessageAttachment } = require('discord.js');
 const bot = new Client();
 
+const name = arguments[0];
+const possibleBirthday = MissingTime.calculateNextBirhday(arguments[1]);
 const token = arguments[2];
 const idDiscordApp = arguments[3];
-const possibleBirthday = MissingTime.calculateNextBirhday(arguments[1]);
-const name = arguments[0];
+const differentZoneMilliseconds = arguments[4];
 
 const words= ['importante', 'hoy', 'cumpleaños', 'birthday', 'cumpleañero', 'cuanto', 'falta', 'mañana'];
 
@@ -23,7 +24,7 @@ bot.on('message', msg => {
 
         if (SearchWords.loopAllWords(msg.content, words)){
 
-            let missing = MissingTime.calculateDifference(possibleBirthday, msg.createdTimestamp);
+            let missing = MissingTime.calculateDifference(possibleBirthday, msg.createdTimestamp, differentZoneMilliseconds);
 
             console.log("keep missing: " + missing + "days :(");
 
