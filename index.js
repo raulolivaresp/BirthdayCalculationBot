@@ -12,10 +12,10 @@ const token = arguments[2];
 const idDiscordApp = arguments[3];
 const differentZoneMilliseconds = arguments[4];
 
-const words= ['importante', 'hoy', 'cumpleaños', 'birthday', 'cumpleañero', 'cuanto', 'falta', 'mañana'];
+const words= ['when', 'is today', 'cumpleaños', 'birthday', 'tomorrow', 'missing'];
 
 bot.on('ready', () => {
-    console.log('Raul birhday bot is online');
+    console.log('Birthday bot is online');
 })
 
 bot.on('message', msg => {
@@ -26,15 +26,15 @@ bot.on('message', msg => {
 
             let missing = MissingTime.calculateDifference(possibleBirthday, msg.createdTimestamp, differentZoneMilliseconds);
 
-            console.log("keep missing: " + missing + "days :(");
+            console.log("keep missing: " + missing + " days :(");
 
             if(missing === 0){ 
-                msg.reply("Es hoy 🥳!!!");
+                msg.reply("Is Today 🥳!!!");
                 const attachment = new MessageAttachment('https://i02.appmifile.com/images/2019/11/05/81b3d413-77b0-46da-9877-a519c1e22108.png');
                 msg.channel.send(msg.author, attachment);
             }
             else {
-                msg.reply("No es hoy 😢. Quedan " + missing + " dias para el cumpleaños del "+ name );
+                msg.reply("Not today 😢. keep missing: " + missing + " days for "+ name +"'s birthday");
             }
         }
     }
