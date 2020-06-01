@@ -3,9 +3,8 @@ module.exports = {
     calculateDifference : function(nextBirthday, currentDate, differentZoneMilliseconds) {
         
         let birthday = new Date(nextBirthday);
-        let birthdayMiliseconds = birthday.getTime();
 
-        let missing = ((birthdayMiliseconds-differentZoneMilliseconds) - currentDate)/86400000;
+        let missing = ((birthday.getTime()+parseInt(differentZoneMilliseconds)) - currentDate)/86400000;
 
         return Math.ceil(missing);
 
