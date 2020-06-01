@@ -8,4 +8,4 @@ COPY calculateDate.js /src
 COPY searchWords.js /src
 COPY index.js /src
 
-CMD [ "node", "." , "name", "mm/dd", "token", "id discord App" , "0"]
+CMD [ "node", "." , "name", "mm/dd", "token", "cliente id" , "0"]
